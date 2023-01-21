@@ -12,8 +12,7 @@ import cv2
 from django.core.files.base import ContentFile
 from django.utils.crypto import get_random_string
 
-model = hub.load(
-    'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
+model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
 
 
 def load_image(img_path):
@@ -53,11 +52,11 @@ def display_image(request, my_model_id,images):
     image_url = my_model_instance.image.path
     # print(images)
     if(images=="['filt1']"):
-        style_image = load_image(r'C:\projects\web_project\styles\style_1.jpg')
+        style_image = load_image(r'C:\projects\web_project\static\styles\style_1.jpg')
     elif(images=="['filt2']"):
-        style_image = load_image(r'C:\projects\web_project\styles\style_2.jpg')
+        style_image = load_image(r'C:\projects\web_project\static\styles\style_2.jpg')
     else :
-        style_image = load_image(r'C:\projects\web_project\styles\style_3.jpg')
+        style_image = load_image(r'C:\projects\web_project\static\styles\style_3.jpg')
     
     content = img_to_sketch(image_url,style_image)
 

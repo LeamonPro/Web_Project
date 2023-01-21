@@ -1,15 +1,16 @@
-
+{% load static %}
+<link rel="stylesheet" href="style.css">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
         <input type="checkbox" id="image1" name="image" value="filt1">
-        <label for="image1"><img src="{% static '/style_1.jpg' %}" alt="Image 1"></label>
+        <label for="image1"><img src="{% static 'styles/style_1.jpg' %}" alt="Image 1" width="100" height="100"></label>
       
         <input type="checkbox" id="image2" name="image" value="filt2">
-        <label for="image2"><img src="{{style2}}" alt="Image 2"></label>
+        <label for="image2"><img src="{% static 'styles/style_2.jpg' %}" alt="Image 2" width="100" height="100"></label>
       
         <input type="checkbox" id="image3" name="image" value="filt3">
-        <label for="image3"><img src="{{style3}}" alt="Image 3"></label>
+        <label for="image3"><img src="{% static 'styles/style_3.jpg' %}" alt="Image 3" width="100" height="100"></label>
 
     <input type="submit" value="Submit">
 </form>
