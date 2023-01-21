@@ -1,0 +1,3 @@
+select#gender option[value="male"]   { background-image:url(../../styles/style_1.jpg);   }
+select#gender option[value="female"] { background-image:url(../../styles/style_1.jpg); }
+select#gender option[value="others"] { background-image:url(../../styles/style_1.jpg); }
