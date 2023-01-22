@@ -22,14 +22,6 @@ def load_image(img_path):
     img = img[tf.newaxis, :]
     return img
 
-# def chek(request):
-#     ms=['image1','image2','image3']
-#     if request.method=='POST':
-#         images=request.POST.getlist('image')
-#     return images
-
- 
-
 
 def upload_image(request):
     ms=['filt1','filt2','filt3']
@@ -52,16 +44,14 @@ def display_image(request, my_model_id,images):
     image_url = my_model_instance.image.path
     # print(images)
     if(images=="['filt1']"):
-        style_image = load_image(r'C:\projects\web_project\static\styles\style_1.jpg')
+        style_image = load_image(r'static\styles\style_1.jpg')
     elif(images=="['filt2']"):
-        style_image = load_image(r'C:\projects\web_project\static\styles\style_2.jpg')
+        style_image = load_image(r'static\styles\style_2.jpg')
     else :
-        style_image = load_image(r'C:\projects\web_project\static\styles\style_3.jpg')
+        style_image = load_image(r'static\styles\style_3.jpg')
     
     content = img_to_sketch(image_url,style_image)
 
-    # content_image = load_image(r"C:\Users\USER\Desktop\Web_Project-master\Web_Project-master\front\web_project\media\images\alert_logo.jpg")
-    # stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
     stylized_image_path = Stylized.objects.create(
         original=my_model_instance, styled_image=content)
     
@@ -80,16 +70,3 @@ def img_to_sketch(image_path,style_image):
     content = ContentFile(buf, get_random_string(length=10))
     return content
 
-# def transfer_style(content_img,style_img):
-#     model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
-#     content_image = load_image(content_img)
-#     style_image = load_image(style_img)
-#     stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
-#     return stylized_image
-
-# def load_image(img_path):
-#     img = tf.io.read_file(img_path)
-#     img = tf.image.decode_image(img, channels=3)
-#     img = tf.image.convert_image_dtype(img, tf.float32)
-#     img = img[tf.newaxis, :]
-#     return img

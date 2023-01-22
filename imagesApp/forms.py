@@ -6,4 +6,3 @@ class MyForm(forms.ModelForm):
         model = MyModel
         fields = ['image']
 
-
